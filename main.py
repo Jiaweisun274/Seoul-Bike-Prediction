@@ -2,13 +2,11 @@ import pandas as pd
 import logging
 from sklearn.model_selection import train_test_split
 
-# Module Imports
 from src.config import CATEGORICAL_COLS, TEST_SIZE, RANDOM_STATE, XGB_PARAMS
 from src.data_loader import DataLoader
 from src.feature_engineering import FeatureEngineer
 from src.model_trainer import ModelTrainer
 
-# Setup Logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 

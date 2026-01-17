@@ -42,7 +42,6 @@ class ModelTrainer:
         logger.info("Evaluating model performance...")
         y_pred = self.model.predict(X_test)
         
-        # Ensure non-negative predictions for bike counts
         y_pred = np.maximum(y_pred, 0)
         
         rmse = np.sqrt(mean_squared_error(y_test, y_pred))

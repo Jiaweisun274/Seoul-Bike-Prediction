@@ -16,7 +16,6 @@ class FeatureEngineer:
     """
     
     def __init__(self):
-        # We will separate categorical and numerical columns processing
         self.preprocessor = None
 
     def create_pipeline(self, categorical_cols: list, numerical_cols: list) -> ColumnTransformer:
@@ -29,17 +28,14 @@ class FeatureEngineer:
         """
         logger.info("Building Feature Engineering Pipeline...")
 
-        # 1. Categorical Pipeline
         cat_pipeline = Pipeline([
             ('encoder', OneHotEncoder(sparse_output=False, handle_unknown='ignore'))
         ])
 
-        # 2. Numerical Pipeline (Scaling is crucial for Linear Models, helpful for others)
         num_pipeline = Pipeline([
             ('scaler', StandardScaler())
         ])
 
-        # Combine them
         self.preprocessor = ColumnTransformer(transformers=[
             ('num', num_pipeline, numerical_cols),
             ('cat', cat_pipeline, categorical_cols)

@@ -4,11 +4,9 @@ from typing import Tuple
 import sys
 import os
 
-# Adjust path to import config if running as script
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from src.config import DATA_FILE
 
-# Configure Logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
@@ -27,15 +25,10 @@ class DataLoader:
         """
         try:
             logger.info(f"Loading data from {self.filepath}...")
-            # 使用 unicode_escape 读取以处理特殊符号
             self.df = pd.read_csv(self.filepath, encoding='unicode_escape')
-            
-            # --- 关键修复：清洗列名 ---
-            # 某些 CSV 文件带有 BOM 标记，会导致 'Date' 变成 'ï»¿Date'
-            # 我们遍历所有列名，把这些怪异字符去掉
+
             self.df.columns = [c.replace('ï»¿', '').strip() for c in self.df.columns]
-            
-            # 双重保险：如果还有列名包含 'Date' 但不叫 'Date'，强制重命名
+
             if 'Date' not in self.df.columns:
                 for col in self.df.columns:
                     if 'Date' in col:
@@ -82,9 +75,7 @@ class DataLoader:
         """
         target_col = 'Rented Bike Count'
         
-        # Fallback logic in case column cleaning affected the target name
         if target_col not in self.df.columns:
-            # Try to find a column that starts with 'Rented Bike'
             potential = [c for c in self.df.columns if c.startswith('Rented Bike')]
             if potential:
                 target_col = potential[0]
