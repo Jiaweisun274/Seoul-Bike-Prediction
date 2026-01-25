@@ -1,23 +1,23 @@
-# 🚲 Seoul Bike Sharing Demand Prediction System
+# Seoul Bike Sharing Demand Prediction System
 
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
 [![XGBoost](https://img.shields.io/badge/XGBoost-1.5+-green.svg)](https://xgboost.readthedocs.io/)
 ![Status](https://img.shields.io/badge/Status-Production--Ready-brightgreen)
 
-## 📌 Project Overview
+## Project Overview
 
 This project engineers a robust, production-ready machine learning pipeline to predict hourly bike rental demand in Seoul, South Korea. Unlike standard analysis notebooks, this repository demonstrates a **full-cycle engineering approach**, featuring modular architecture, automated testing, and advanced ensemble modeling.
 
 By accurately predicting demand based on weather conditions (Temperature, Humidity, Wind Speed) and temporal features, this system helps bike-sharing operators optimize fleet distribution and reduce operational costs.
 
-## 🚀 Key Technical Highlights
+## Key Technical Highlights
 
 - **Production-Grade Architecture**: Code is modularized into `data_loader`, `feature_engineering`, and `model_trainer` for scalability and maintainability.
 - **Advanced Modeling**: Implements **XGBoost Regressor**, achieving superior performance (R² > 0.93) compared to traditional Linear Regression baselines.
 - **Rigorous Validation**: Uses a strict **80/20 Train-Test split** with fixed random seeds (`random_state=42`) to ensure reproducibility and prevent data leakage.
 - **Robust Data Pipeline**: Handles complex encoding issues (BOM/unicode), automated temporal feature extraction, and defensive programming against data corruption.
 
-## 📊 Model Performance
+## Model Performance
 
 The current production model (XGBoost) achieves the following metrics on the **20% held-out test set** (unseen data):
 
@@ -29,7 +29,7 @@ The current production model (XGBoost) achieves the following metrics on the **2
 
 *> Note: Performance is significantly improved by incorporating non-linear interactions between temperature and seasonality.*
 
-## 🛠️ Project Structure
+## Project Structure
 
 ```bash
 Seoul-Bike-Prediction/
@@ -45,7 +45,7 @@ Seoul-Bike-Prediction/
 └── requirements.txt    # Project dependencies
 ```
 
-## 💻 Installation & Usage
+## Installation & Usage
 
 ### 1. Clone the Repository
 
@@ -78,12 +78,12 @@ To verify data integrity and logic:
 python -m pytest tests/
 ```
 
-## 📈 Future Improvements
+## Future Improvements
 
 - [ ] Deploy the model as a REST API using **FastAPI**.
 - [ ] Implement **SHAP** (SHapley Additive exPlanations) for model interpretability.
 - [ ] Add CI/CD workflows using GitHub Actions.
 
-## 📝 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
