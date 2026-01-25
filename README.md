@@ -6,26 +6,26 @@
 
 ## Project Overview
 
-This project engineers a robust, production-ready machine learning pipeline to predict hourly bike rental demand in Seoul, South Korea. Unlike standard analysis notebooks, this repository demonstrates a **full-cycle engineering approach**, featuring modular architecture, automated testing, and advanced ensemble modeling.
+This project engineers a robust, production-ready machine learning pipeline to predict hourly bike rental demand in Seoul, South Korea. 
 
 By accurately predicting demand based on weather conditions (Temperature, Humidity, Wind Speed) and temporal features, this system helps bike-sharing operators optimize fleet distribution and reduce operational costs.
 
 ## Key Technical Highlights
 
 - **Production-Grade Architecture**: Code is modularized into `data_loader`, `feature_engineering`, and `model_trainer` for scalability and maintainability.
-- **Advanced Modeling**: Implements **XGBoost Regressor**, achieving superior performance (R² > 0.93) compared to traditional Linear Regression baselines.
-- **Rigorous Validation**: Uses a strict **80/20 Train-Test split** with fixed random seeds (`random_state=42`) to ensure reproducibility and prevent data leakage.
+- **Advanced Modeling**: Implements XGBoost Regressor, achieving superior performance (R² > 0.93) compared to traditional Linear Regression baselines.
+- **Rigorous Validation**: Uses a strict 80/20 Train-Test split with fixed random seeds (`random_state=42`) to ensure reproducibility and prevent data leakage.
 - **Robust Data Pipeline**: Handles complex encoding issues (BOM/unicode), automated temporal feature extraction, and defensive programming against data corruption.
 
 ## Model Performance
 
-The current production model (XGBoost) achieves the following metrics on the **20% held-out test set** (unseen data):
+The current production model (XGBoost) achieves the following metrics on the 20% held-out test set (unseen data):
 
 | Metric | Score | Interpretation |
 | :--- | :--- | :--- |
-| **R² Score** | **0.936** | The model explains **93.6%** of the variance in rental demand. |
-| **RMSE** | **163.69** | Average prediction error in number of bikes per hour. |
-| **MAE** | **96.77** | Mean Absolute Error. |
+| **R² Score** | 0.936 | The model explains 93.6% of the variance in rental demand. |
+| **RMSE** | 163.69 | Average prediction error in number of bikes per hour. |
+| **MAE** | 96.77 | Mean Absolute Error. |
 
 *> Note: Performance is significantly improved by incorporating non-linear interactions between temperature and seasonality.*
 
@@ -80,8 +80,8 @@ python -m pytest tests/
 
 ## Future Improvements
 
-- [ ] Deploy the model as a REST API using **FastAPI**.
-- [ ] Implement **SHAP** (SHapley Additive exPlanations) for model interpretability.
+- [ ] Deploy the model as a REST API using FastAPI.
+- [ ] Implement SHAP (SHapley Additive exPlanations) for model interpretability.
 - [ ] Add CI/CD workflows using GitHub Actions.
 
 ## License
